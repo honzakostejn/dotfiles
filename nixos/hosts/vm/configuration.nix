@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      # ./hardware-configuration.nix
       ./environment.nix
     ];
 
@@ -16,6 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "vm";
+  services.openssh.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -91,6 +92,6 @@
     options = "--delete-older-than 7d";
   };
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

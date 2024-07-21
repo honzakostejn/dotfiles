@@ -5,6 +5,10 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,12 +18,26 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, ... }: 
+    let
+    system = "x86_64-linux";
+    # rootAuthorizedKeys = [
+    #   # This user can ssh using `ssh root@<ip>`
+    #   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQRxPoqlThDrkR58pKnJgmeWPY9/wleReRbZ2MOZRyd"
+    # ];
+  in
+  {
     nixosConfigurations = {
       vm = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
+        inherit system;
         modules = [
+          # disk configuration
+          ./disk-config.nix
+          disko.nixosModules.disko
+
+          # configuration
           ./hosts/vm/configuration.nix
+
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager

@@ -1,0 +1,58 @@
+# --------------- LOAD SCRIPTING ADDITION ---------------
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# --------------- MY PERSONAL CONFIG ---------------
+# bsp / float layout
+# this setting can be defined on a per–space basis
+yabai -m config layout bsp
+
+# new window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+
+# make floating windows stay on top
+# yabai -m config window_topmost on
+
+# focused window border color
+yabai -m config window_border on
+yabai -m config window_border_blur off
+yabai -m config window_border_width 3
+yabai -m config active_window_border_color 0xffEBA0AC
+
+# add 45 padding to the top and 0 to the bottom of all spaces
+# regardless of the display it belongs to (sketchybar)
+# yabai -m config external_bar all:45:0
+
+# set screen padding
+# yabai -m config top_padding 50
+yabai -m config top_padding 5
+yabai -m config bottom_padding 5
+yabai -m config left_padding 5
+yabai -m config right_padding 5
+
+# set gaps to 5pt (default: 0)
+yabai -m config window_gap 5
+
+# set mouse follows focus mode (default: off)
+# yabai -m config mouse_follows_focus on
+
+# set mouse interaction modifier key (default: fn)
+yabai -m config mouse_modifier alt
+
+# set modifier + right-click drag to resize window (default: resize)
+yabai -m config mouse_action1 resize
+
+# events
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+
+# float (disable) these apps
+yabai -m rule --add app="^App Store$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Digital Colour Meter$" manage=off
+# yabai -m rule --add app="^Microsoft Teams$" manage=off
+yabai -m rule --add app="^Skitch$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
