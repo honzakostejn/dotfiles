@@ -32,7 +32,7 @@
         inherit system;
         modules = [
           # disk configuration
-          ./disk-config.nix
+          ./hosts/vm/disk-config.nix
           disko.nixosModules.disko
 
           # configuration
