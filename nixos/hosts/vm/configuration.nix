@@ -6,27 +6,24 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      # ./hardware-configuration.nix
+    [
       ./environment.nix
+      ../home/honzakostejn/home.nix
     ];
 
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Networking
   networking.hostName = "vm";
+  networking.networkmanager.enable = true;
   services.openssh.enable = true;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
 
-  # Set your time zone.
+  # Locale
   time.timeZone = "Europe/Prague";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -38,24 +35,11 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
   services.xserver = {
+    # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
   };
-
-  # programs.hyprland = {
-  #   # Install the packages from nixpkgs
-  #   enable = true;
-  # };
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -71,20 +55,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.honzakostejn = {
     isNormalUser = true;
-    description = "honzakostejn";
     password = "changemewithpasswd";
+    description = "honzakostejn";
     extraGroups = [ "networkmanager" "wheel" ];
   };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  ];
 
   # Automatic Garbage Collection
   nix.gc = {
@@ -93,6 +67,8 @@
     options = "--delete-older-than 7d";
   };
 
+  # NixOS options
   system.stateVersion = "24.05";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nixpkgs.config.allowUnfree = true;
 }
