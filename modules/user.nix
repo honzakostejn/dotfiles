@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.home-manager.nixosModules.default
+    # inputs.home-manager.nixosModules.default
   ];
 
   users.users.honzakostejn = {
@@ -12,9 +12,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.honzakostejn = import ../home/default.nix;
-  };
+  # home-manager = {
+  #   useGlobalPkgs = true;
+  #   useUserPackages = true;
+  #   users.honzakostejn = import ../home/default.nix;
+  # };
 }

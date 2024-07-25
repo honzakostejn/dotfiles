@@ -19,8 +19,7 @@
   };
 
   outputs = inputs@{ self, nixpkgs, ... }: {
-    nixosConfigurations = {
-      vm = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         extraSpecialArgs = { inherit inputs; };
         modules = [
@@ -31,7 +30,6 @@
           ./hosts/vm/configuration.nix
           ./modules/default.nix
         ];
-      };
     };
   };
 }

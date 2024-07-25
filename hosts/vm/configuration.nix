@@ -1,4 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+
+{
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -40,13 +42,13 @@
     pulse.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.honzakostejn = {
-    isNormalUser = true;
-    password = "changemewithpasswd";
-    description = "honzakostejn";
-    extraGroups = [ "networkmanager" "wheel" ];
-  };
+  # # Define a user account. Don't forget to set a password with ‘passwd’.
+  # users.users.honzakostejn = {
+  #   isNormalUser = true;
+  #   password = "changemewithpasswd";
+  #   description = "honzakostejn";
+  #   extraGroups = [ "networkmanager" "wheel" ];
+  # };
 
   # Automatic Garbage Collection
   nix.gc = {
