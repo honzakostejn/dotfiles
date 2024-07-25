@@ -72,6 +72,7 @@
   users.users.honzakostejn = {
     isNormalUser = true;
     description = "honzakostejn";
+    password = "changemewithpasswd";
     extraGroups = [ "networkmanager" "wheel" ];
   };
 

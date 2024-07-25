@@ -3,13 +3,13 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sda";
+        # when using disko-install, we will overwrite this value from the commandline
+        device = "/dev/nvme0n1";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
               priority = 1;
-              name = "ESP";
               start = "1M";
               end = "512M";
               type = "EF00";
@@ -19,7 +19,7 @@
                 mountpoint = "/boot";
               };
             };
-            root = {
+            nixos = {
               size = "100%";
               content = {
                 type = "btrfs";
