@@ -1,12 +1,7 @@
-{ config, inpputs, ... }:
-
 {
-  # imports = [
-  #   inputs.disko.nixosModules.disko
-  # ];
-
   disko.devices = {
-    disk.main = {
+    disk = {
+      main = {
         type = "disk";
         # when using disko-install, we will overwrite this value from the commandline
         device = "/dev/nvme0n1";
@@ -35,6 +30,7 @@
             };
           };
         };
+      };
     };
   };
 }
