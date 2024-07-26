@@ -43,12 +43,12 @@
   };
 
   # # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.honzakostejn = {
-  #   isNormalUser = true;
-  #   password = "changemewithpasswd";
-  #   description = "honzakostejn";
-  #   extraGroups = [ "networkmanager" "wheel" ];
-  # };
+  users.users.honzakostejn = {
+    isNormalUser = true;
+    initialPassword = "12345";
+    description = "honzakostejn";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
 
   # Automatic Garbage Collection
   nix.gc = {
