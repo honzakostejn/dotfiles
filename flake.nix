@@ -24,6 +24,7 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [
           # disk configuration
+          inputs.disko.nixosModules.disko
           ./hosts/vm/disk-config.nix
 
           # configuration

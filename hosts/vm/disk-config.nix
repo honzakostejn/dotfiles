@@ -1,9 +1,9 @@
 { config, inpputs, ... }:
 
 {
-  imports = [
-    inputs.disko.nixosModules.disko
-  ];
+  # imports = [
+  #   inputs.disko.nixosModules.disko
+  # ];
 
   disko.devices = {
     disk.main = {
