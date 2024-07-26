@@ -1,4 +1,4 @@
-{ inpputs, ... }:
+{ config, inpputs, ... }:
 
 {
   imports = [
