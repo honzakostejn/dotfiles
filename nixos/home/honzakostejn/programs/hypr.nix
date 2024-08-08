@@ -7,9 +7,9 @@
     settings = {
       "$menu" = "rofi -show run";
 
-      "$mod" = "SUPER";
+      "$mainMod" = "SUPER";
       bind = [
-        "$mod, SPACEBAR, exec, $menu"
+        "$mainMod, SPACEBAR, exec, $menu"
       ];
     };
   };
