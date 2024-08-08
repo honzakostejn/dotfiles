@@ -2,8 +2,7 @@
 
 {
   imports = [
-    # enable programs.hyprland first! inputs.hyprland.homeManagerModules.default
-    # ./programs/hypr.nix
+    ./programs/hypr.nix
   ];
 
   home.stateVersion = "24.05";
