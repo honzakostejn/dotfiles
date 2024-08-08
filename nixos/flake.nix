@@ -18,7 +18,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, disko, home-manager, ... }: 
+  outputs = inputs@{ self, nixpkgs, disko, home-manager, hyprland, ... }: 
     let
     system = "x86_64-linux";
     # rootAuthorizedKeys = [
