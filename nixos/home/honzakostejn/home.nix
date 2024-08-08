@@ -16,6 +16,7 @@
 
   # User packages
   home.packages = with pkgs; [
+    kitty
     neofetch
     neovim
     git

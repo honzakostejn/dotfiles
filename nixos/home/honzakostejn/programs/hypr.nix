@@ -4,13 +4,11 @@
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    settings = {
-      "$menu" = "rofi -show run";
+    extraConfig = ''
+      $mainMod = SUPER
 
-      "$mainMod" = "SUPER";
-      bind = [
-        "$mainMod, SPACEBAR, exec, $menu"
-      ];
-    };
+      bind = $mainMod, Q, exec, kitty
+      bind = $mainMod, R, exec, sh rofi -show drun
+    ''
   };
 }
