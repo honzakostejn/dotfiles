@@ -9,6 +9,6 @@
 
       bind = $mainMod, Q, exec, kitty
       bind = $mainMod, R, exec, sh rofi -show drun
-    ''
+    '';
   };
 }
